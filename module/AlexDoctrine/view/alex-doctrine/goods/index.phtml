@@ -1,0 +1,43 @@
+<?php
+
+//add js on the bottom on the page
+$this->headScript() ->prependFile($this->basePath() . '/js/alex/plugins/jquery.tablesorter.min.js');
+    $this->InlineScript()->appendFile($this->basePath() .'/js/alex/APP.js');
+    $this->InlineScript()->appendFile($this->basePath() .'/js/alex/goods.js');
+//// add css on the top of the page
+    $this->headLink()->appendStylesheet($this->basePath() .'/css/alex/plugins/style.css');
+?>
+
+<div>
+    <table  class="table tablesorter">
+        <thead>
+        <tr>
+            <th>image</th>
+            <th>price</th>
+            <th>currency</th>
+            <th>link to original</th>
+            <th>description</th>
+        </tr>
+        </thead>
+        <tbody>
+
+            <?php if ( isset($this->allGoods) && !empty($this->allGoods) ) :?>
+            <?php foreach ($this->allGoods as $key => $good) : ?>
+            <tr>
+            <?php $src =  $good['image'];?>
+                <td><img src="<?php echo $src;?>"/></td>
+                <td><?php echo $good['price'];?></td>
+                <td><?php echo $good['currency'];?></td>
+                <td> <a href="http://market.yandex.ua<?php echo $good['linkToOriginal'];?>"><?php echo $good['title'];?></a></td>
+                <td><?php echo $good['description'];?></td>
+            </tr>
+            <?php endforeach;?>
+            <?php endif;?>
+
+   </tbody>
+    </table>
+
+
+</div>
+
+

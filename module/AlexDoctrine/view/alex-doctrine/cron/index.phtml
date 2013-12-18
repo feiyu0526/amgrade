@@ -1,0 +1,41 @@
+Create form that inserts/update new row to Calls table (with AJAX)
+
+<br /><br />
+
+
+<?php
+//add js on the bottom on the page
+    $this->InlineScript()->appendFile($this->basePath() .'/js/alex/plugin/jquery.tmpl.min.js');
+    $this->InlineScript()->appendFile($this->basePath() .'/js/alex/plugin/jquery.validate.min.js');
+    $this->InlineScript()->appendFile($this->basePath() .'/js/alex/plugin/jquery.loadmask.min.js');
+    $this->InlineScript()->appendFile($this->basePath() .'/js/alex/APP.js');
+    $this->InlineScript()->appendFile($this->basePath() .'/js/alex/calls.js');
+// add css on the top of the page
+    $this->headLink()->appendStylesheet($this->basePath() .'/css/alex.css');
+    $this->headLink()->appendStylesheet($this->basePath() .'/css/jquery.loadmask.css');
+?>
+<span id="for_server_error"></span>
+
+<br /><br />
+<div>
+    <table class="table tab-calls">
+        <tr>
+            <th>Number/id</th>
+            <th>Customer name</th>
+            <th>Subject</th>
+            <th>Content</th>
+        </tr>
+
+<!--            <tr class="tr_${id}">
+                    <td>${id}</td>
+                    <td>${customerFirstName}</td>
+                    <td>${subject}</td>
+                    <td>${content}</td>
+
+            </tr>-->
+
+    </table>
+
+
+</div>
+

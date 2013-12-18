@@ -1,0 +1,53 @@
+
+
+<?php
+
+
+    $this->InlineScript()->appendFile($this->basePath() .'/js/alex/APP.js');
+    $this->InlineScript()->appendFile($this->basePath() .'/js/alex/parser.js');
+////// add css on the top of the page
+//    $this->headLink()->appendStylesheet($this->basePath() .'/css/alex.css');
+?>
+<div id="message_box">
+     <?php echo $this->messages; ?>
+</div>
+
+<div>
+<?php
+ $form = $this->form;
+$form->setAttribute('action', $this->url(
+    'AlexDoctrine-2'
+));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formCollection($form);
+echo $this->form()->closeTag();
+
+?>
+</div>
+
+    <table class="table">
+        <tr>
+            <th>task_id</th>
+            <th>category</th>
+            <th>status</th>
+            <th>error</th>
+        </tr>
+
+            <?php if ( isset($this->tasks) && !empty($this->tasks) ) :?>
+            <?php foreach ($this->tasks as $key => $task) : ?>
+         <tr>
+                <td><?php echo $task['id'];?></td>
+                <td><?php echo $task['category'];?></td>
+                <td><?php echo $task['status'] ? $task['status'] : 'not started yet';?></td>
+                <td><?php echo $task['error'] ? $task['error'] : 'no error';?></td>
+                <?php if (  $task['status'] == 'error' ) :?>
+                    <td><a name="<?php echo $task['id']; ?>" class="refreshTask" href="#"> restart </a></td>
+                <?php endif;?>
+         </tr>
+            <?php endforeach;?>
+            <?php endif;?>
+
+
+    </table>
